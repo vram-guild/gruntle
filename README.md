@@ -100,7 +100,8 @@ mod_name=themod
 # Fabric version - omit for non-Fabric or if no access widener needed
 accesswidener=src/main/resources/themod.accesswidener
 
-# Change as needed for nested builds - otherwise leave as shown here
+# Provide if needed for nested builds
+# If omitted will default to what is shown here
 license_file=../HEADER
 checkstyle=../checkstyle.xml
 
