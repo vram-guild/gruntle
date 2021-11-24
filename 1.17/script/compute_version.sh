@@ -23,3 +23,5 @@ compute_minor_version () {
 compute_minor_version
 minor_version=$?
 echo ${minor_version}
+
+curl -s https://maven.vram.io/io/vram/canvas-fabric-mc117/maven-metadata.xml | grep "<release>" | sed "s/.*<release>\([^<]*\)<\/release>.*/\1/"

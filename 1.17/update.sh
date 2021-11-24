@@ -1,5 +1,5 @@
 source script/refresh_scripts.sh
-source script/compute_version.sh
+#source script/compute_version.sh
 
 # download checkstyle
 # update MC/Fabric versions
