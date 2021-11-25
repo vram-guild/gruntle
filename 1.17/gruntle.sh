@@ -23,9 +23,30 @@ source gruntle/refresh.sh
 # remove scripts
 rm -rf gruntle
 
-# download checkstyle
-# update MC/Fabric versions
-# get latest build.gradle
-# get latest gradle.settings
+# following are not yet tested!
 
-echo 'ALL DONE'
+commit() {
+    echo "Commiting and pushing update"
+    git add *
+    git commit -m "Gruntle automatic update"
+    git push
+}
+
+if [[ $1 == 'auto' ]]; then
+  commit
+fi
+
+if [[ $1 == "publish" ]]; then
+  echo "Publishing jars"
+  fabric/gradlew publish
+fi
+
+if [[ $1 == "build" ]]; then
+  echo "Publishing jars"
+  fabric/gradlew publish
+  echo "Building and distributing"
+  fabric/gradlew build --rerunTasks
+  fabric/gradlew curseforge githubRelease publishModrinth
+fi
+
+echo 'Gruntle refresh complete'
