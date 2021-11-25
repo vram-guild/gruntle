@@ -103,7 +103,7 @@ accesswidener=src/main/resources/themod.accesswidener
 # Provide if needed for nested builds
 # If omitted will default to what is shown here
 license_file=../HEADER
-checkstyle=../checkstyle.xml
+checkstyle_config=../checkstyle.xml
 
 # Build automation support
 github_repository_owner=vram-guild
