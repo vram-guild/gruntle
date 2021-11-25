@@ -8,13 +8,15 @@ updateVersion()
 {
   if grep -q $1 $2; then
     subUrl=${1//[:\.]/\/}
-    ver=$(curl -s https://maven.vram.io/io/vram/bitkit/maven-metadata.xml | grep "<release>" | sed -n 's:.*<release>\(.*\)</release>.*:\1:p')
+    echo "https://maven.vram.io/$subUrl/maven-metadata.xml"
+    ver=$(curl -s "https://maven.vram.io/$subUrl/maven-metadata.xml" | grep "<release>" | sed -n 's:.*<release>\(.*\)</release>.*:\1:p')
     echo "Lastest version of $1 is $ver"
     sed -i '' "s/$1:[0-9\.]*/$1:$ver/" $2
   fi
 }
 
 updateVersion io.vram:bitkit fabric/project.gradle
+updateVersion io.vram:frex-fabric-mc117 fabric/project.gradle
 
 sed -i '' 's/"fabricloader": ".*"/"fabricloader": ">=0.12.5"/' fabric/src/main/resources/fabric.mod.json
 sed -i '' 's/"minecraft": ".*"/"minecraft": "1.17.1"/' fabric/src/main/resources/fabric.mod.json
