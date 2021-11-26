@@ -1,6 +1,11 @@
 readonly MC_VERSION="1.17"
 
 if [[ $1 == 'auto' ]]; then
+  if ! grep -q gruntle .gitignore; then
+    echo "Auto-update requires .gitignore to exclude the gruntle folder. Please update .gitignore and retry."
+    exit 1
+  fi
+
   if output=$(git status --porcelain) && [ -z "$output" ]; then
     echo "Attempting auto-update. Git starting status is clean."
   else
