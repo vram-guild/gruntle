@@ -27,27 +27,6 @@ updateStaticVersion() {
   fi
 }
 
-
-if [[ $1 == 'auto' ]]; then
-    if output=$(git status --porcelain) && [ -z "$output" ]; then
-      echo "Auto-update actions not required - no changes."
-    else
-      echo "Attempting test build"
-      cd fabric
-      ./gradlew build
-      cd ..
-
-      echo "Build successful, commiting changes to git"
-      git add *
-      git commit -m "Gruntle automatic update"
-
-      echo "Publishing to maven"
-      cd fabric
-      ./gradlew publish --rerun-tasks
-      cd ..
-    fi
-fi
-
 updateVersion io.vram:bitkit fabric/project.gradle
 updateVersion io.vram:bitraster fabric/project.gradle
 updateVersion io.vram:special-circumstances fabric/project.gradle
@@ -80,3 +59,33 @@ updateStaticVersion me.shedaniel:RoughlyEnoughItems-fabric 6.2.335 fabric/projec
 
 sed -i '' 's/"fabricloader": ".*"/"fabricloader": ">=0.12.5"/' fabric/src/main/resources/fabric.mod.json
 sed -i '' 's/"minecraft": ".*"/"minecraft": "1.17.1"/' fabric/src/main/resources/fabric.mod.json
+
+
+if [[ $1 == 'auto' ]]; then
+    if output=$(git status --porcelain) && [ -z "$output" ]; then
+      echo "Auto-update actions not required - no changes."
+    else
+      echo "Attempting test build"
+      cd fabric
+
+      if ./gradlew build; then
+        echo "Gradle build successful" >&2
+      else
+        echo "Gradle build failed. Cannot continue." >&2
+        cd ..
+        rm -rf gruntle
+        exit
+      fi
+
+      cd ..
+
+      echo "Commiting changes to git"
+      git add *
+      git commit -m "Gruntle automatic update"
+
+      echo "Publishing to maven"
+      cd fabric
+      ./gradlew publish --rerun-tasks
+      cd ..
+    fi
+fi
