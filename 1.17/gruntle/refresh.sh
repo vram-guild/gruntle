@@ -10,7 +10,7 @@ updateVersion()
     subUrl=${1//[:\.]/\/}
     ver=$(curl -s "https://maven.vram.io/$subUrl/maven-metadata.xml" | grep "<release>" | sed -n 's:.*<release>\(.*\)</release>.*:\1:p')
 
-    if grip -q $1:$ver $2; then
+    if grep -q $1:$ver $2; then
       echo $1:$ver "is already current"
     else
       echo "Updating $1 to $ver"
