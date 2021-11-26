@@ -27,6 +27,27 @@ updateStaticVersion() {
   fi
 }
 
+
+if [[ $1 == 'auto' ]]; then
+    if output=$(git status --porcelain) && [ -z "$output" ]; then
+      echo "Auto-update actions not required - no changes."
+    else
+      echo "Attempting test build"
+      cd fabric
+      ./gradlew build
+      cd ..
+
+      echo "Build successful, commiting changes to git"
+      git add *
+      git commit -m "Gruntle automatic update"
+
+      echo "Publishing to maven"
+      cd fabric
+      ./gradlew publish --rerun-tasks
+      cd ..
+    fi
+fi
+
 updateVersion io.vram:bitkit fabric/project.gradle
 updateVersion io.vram:bitraster fabric/project.gradle
 updateVersion io.vram:special-circumstances fabric/project.gradle
