@@ -79,8 +79,7 @@ if [[ $1 == 'auto' ]]; then
 
       if ./gradlew build; then
         echo "Gradle build successful, commiting changes to git"
-        # should not be needed?
-        #git add *
+        git add *
         git commit -m "Gruntle automatic update"
         git push
 
