@@ -9,8 +9,13 @@ updateVersion()
   if grep -q $1 $2; then
     subUrl=${1//[:\.]/\/}
     ver=$(curl -s "https://maven.vram.io/$subUrl/maven-metadata.xml" | grep "<release>" | sed -n 's:.*<release>\(.*\)</release>.*:\1:p')
-    echo "Lastest version of $1 is $ver"
-    sed -i '' "s/$1:[0-9\.]*/$1:$ver/" $2
+
+    if grip -q $1:$ver $2; then
+      echo $1:$ver "is already current"
+    else
+      echo "Updating $1 to $ver"
+      sed -i '' "s/$1:[0-9\.]*/$1:$ver/" $2
+    fi
   fi
 }
 
@@ -22,8 +27,12 @@ updateVersion()
 #     should generally start with fabric/ forge/ or quilt/
 updateStaticVersion() {
   if grep -q $1 $3; then
-    echo "Lastest version of $1 is $2"
-    sed -i '' "s/$1:[0-9\.\-\_a-zA-Z\+]*/$1:$2/" $3
+    if grep -q $1:$2 $3; then
+      echo $1:$2 "is already current"
+    else
+      echo "Updating $1 to $2"
+      sed -i '' "s/$1:[0-9\.\-\_a-zA-Z\+]*/$1:$2/" $3
+    fi
   fi
 }
 
@@ -69,23 +78,18 @@ if [[ $1 == 'auto' ]]; then
       cd fabric
 
       if ./gradlew build; then
-        echo "Gradle build successful" >&2
-      else
-        echo "Gradle build failed. Cannot continue." >&2
+        echo "Gradle build successful, commiting changes to git"
+        git add *
+        git commit -m "Gruntle automatic update"
+
+        echo "Publishing to maven"
+        cd fabric
+        ./gradlew publish --rerun-tasks
         cd ..
-        rm -rf gruntle
-        exit
+      else
+        echo "Gradle build failed. Cannot continue."
       fi
 
-      cd ..
-
-      echo "Commiting changes to git"
-      git add *
-      git commit -m "Gruntle automatic update"
-
-      echo "Publishing to maven"
-      cd fabric
-      ./gradlew publish --rerun-tasks
       cd ..
     fi
 fi
