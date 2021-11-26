@@ -1,5 +1,7 @@
 readonly MC_VERSION="1.17"
 
+echo "GRUNTLE REFRESH FOR $MC_VERSION - IF THIS IS NOT A 1.17 BRANCH YOU HAVE DONE A BAD"
+
 if [[ $1 == 'auto' ]]; then
   if ! grep -q gruntle .gitignore; then
     echo "Auto-update requires .gitignore to exclude the gruntle folder. Please update .gitignore and retry."
@@ -14,8 +16,6 @@ if [[ $1 == 'auto' ]]; then
   fi
 fi
 
-
-echo "GRUNTLE REFRESH FOR $MC_VERSION - IF THIS IS NOT A 1.17 BRANCH YOU HAVE DONE A BAD"
 echo 'Checking for build updates...'
 # delete gruntle repo folder if exists from aborted run
 if [ -d "gruntle-master" ]; then
