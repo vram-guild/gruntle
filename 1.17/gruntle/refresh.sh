@@ -69,11 +69,26 @@ updateStaticVersion me.shedaniel:RoughlyEnoughItems-fabric 6.2.335 fabric/projec
 sed -i '' 's/"fabricloader": ".*"/"fabricloader": ">=0.12.5"/' fabric/src/main/resources/fabric.mod.json
 sed -i '' 's/"minecraft": ".*"/"minecraft": "1.17.1"/' fabric/src/main/resources/fabric.mod.json
 
-
 if [[ $1 == 'auto' ]]; then
     if output=$(git status --porcelain) && [ -z "$output" ]; then
-      echo "Auto-update actions not required - no changes."
+      # We haven't changed anything but check if latest commit is published
+      mod_name=$(grep "mod_name=" "fabric/gradle.properties" | sed -n 's:.*mod_name=\(.*\):\1:p')
+      maven_group=$(grep "group=" "fabric/gradle.properties" | sed -n 's:.*group=\(.*\):\1:p')
+      subUrl=${maven_group//[:\.]/\/}
+      major_minor=$(grep "mod_version=" "fabric/gradle.properties" | sed -n 's:.*mod_version=\(.*\):\1:p')
+      patch=$(git rev-list --count HEAD)
+      mavenVer=$(curl -s "https://maven.vram.io/$subUrl/$mod_name-fabric-mc117/maven-metadata.xml" | grep "<release>" | sed -n 's:.*<release>\(.*\)</release>.*:\1:p')
+
+      if [[ "$mavenVer" == "$major_minor.$patch" ]]; then
+        echo "No Gruntle update actions required - no dependency changes and latest publish version $major_minor.$patch is current with the commit log count."
+      else
+        echo "Publishing jar because maven release $mavenVer is not current with expected version $major_minor.$patch."
+        cd fabric
+        ./gradlew publish --rerun-tasks
+        cd ..
+      fi
     else
+      echo "Gruntle made changes. Attempting automatic check-in."
       echo "Attempting test build"
       cd fabric
 
