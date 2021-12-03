@@ -2,7 +2,7 @@
 // DO NOT MAKE CHANGES HERE - THEY WILL BE OVERWRITTEN BY AUTOMATED UPDATE
 
 plugins {
-	id 'fabric-loom' version '0.10.58'
+	id 'fabric-loom' version '0.10.63'
 	id 'eclipse'
 	id 'idea'
 	id 'maven-publish'
@@ -17,8 +17,8 @@ plugins {
 ext.mc_tag = 'mc117'
 ext.minecraft_version = '1.17.1'
 ext.release_version = '1.17.1'
-ext.loader_version = '0.12.5'
-ext.fabric_version = '0.42.1+1.17'
+ext.loader_version = '0.12.8'
+ext.fabric_version = '0.44.0+1.17'
 
 sourceCompatibility = JavaVersion.VERSION_16
 targetCompatibility = JavaVersion.VERSION_16

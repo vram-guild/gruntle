@@ -62,9 +62,9 @@ updateVersion grondag:mcmarkdown-mc118 fabric/project.gradle
 # https://www.curseforge.com/minecraft/mc-mods/modmenu/files
 updateStaticVersion com.terraformersmc:modmenu 3.0.0 fabric/project.gradle
 # https://www.curseforge.com/minecraft/mc-mods/cloth-config/files
-updateStaticVersion me.shedaniel.cloth:cloth-config-fabric 6.0.43 fabric/project.gradle
+updateStaticVersion me.shedaniel.cloth:cloth-config-fabric 6.0.45 fabric/project.gradle
 # https://www.curseforge.com/minecraft/mc-mods/roughly-enough-items/files
-updateStaticVersion me.shedaniel:RoughlyEnoughItems-fabric 7.0.342 fabric/project.gradle
+updateStaticVersion me.shedaniel:RoughlyEnoughItems-fabric 7.0.343 fabric/project.gradle
 
 sed -i '' 's/"fabricloader": ".*"/"fabricloader": ">=0.12.8"/' fabric/src/main/resources/fabric.mod.json
 sed -i '' 's/"minecraft": ".*"/"minecraft": "1.18"/' fabric/src/main/resources/fabric.mod.json
