@@ -102,7 +102,10 @@ if [[ $1 == 'auto' ]]; then
         echo "Publishing to maven"
         cd fabric
         ./gradlew publish --rerun-tasks
-        ./gradlew githubRelease --rerun-tasks
+        # Gradle/loom won't re-include nested jars without this
+        # Also won't do it with --rerun-tasks on githubRelease - has to be a build
+        ./gradlew build --rerun-tasks
+        ./gradlew githubRelease
         cd ..
       else
         echo "Gradle build failed. Cannot continue."
