@@ -185,7 +185,7 @@ githubRelease {
 	targetCommitish { grgit.branch.current().name }
 	releaseName project.minecraft_version + "-" + project.version
 
-	FilenameFilter filter = { dir, filename -> filename.contains(project.version) && !filename.contains("-dev.jar") }
+	FilenameFilter filter = { dir, filename -> filename.contains(project.version) && !filename.contains("-dev.jar") && !filename.contains("SNAPSHOT") }
 	releaseAssets = jar.destinationDir.listFiles filter
 }
 
