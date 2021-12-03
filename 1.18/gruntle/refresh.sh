@@ -85,6 +85,7 @@ if [[ $1 == 'auto' ]]; then
         echo "Publishing jar because maven release $mavenVer is not current with expected version $major_minor.$patch."
         cd fabric
         ./gradlew publish --rerun-tasks
+        ./gradlew githubRelease --rerun-tasks
         cd ..
       fi
     else
@@ -101,6 +102,7 @@ if [[ $1 == 'auto' ]]; then
         echo "Publishing to maven"
         cd fabric
         ./gradlew publish --rerun-tasks
+        ./gradlew githubRelease --rerun-tasks
         cd ..
       else
         echo "Gradle build failed. Cannot continue."
