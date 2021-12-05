@@ -8,7 +8,7 @@ readonly REI_VERSION="6.2.335"
 
 # https://fabricmc.net/versions.html
 readonly LOADER_VERSION="0.12.8"
-readonly MC_VERSION="1.17.1"
+readonly MC_FULL_VERSION="1.17.1"
 
 ### START COMMON CODE ##########################################
 
@@ -91,7 +91,7 @@ updateStaticVersion me.shedaniel.cloth:cloth-config-fabric $CLOTH_CONFIG_VERSION
 updateStaticVersion me.shedaniel:RoughlyEnoughItems-fabric $REI_VERSION fabric/project.gradle
 
 sed -i '' "s/\"fabricloader\": \".*\"/\"fabricloader\": \">=$LOADER_VERSION\"/" fabric/src/main/resources/fabric.mod.json
-sed -i '' "s/\"minecraft\": \".*\"/\"minecraft\": \"$MC_VERSION\"/" fabric/src/main/resources/fabric.mod.json
+sed -i '' "s/\"minecraft\": \".*\"/\"minecraft\": \"$MC_FULL_VERSION\"/" fabric/src/main/resources/fabric.mod.json
 
 if [[ $1 == 'auto' ]]; then
     if output=$(git status --porcelain) && [ -z "$output" ]; then
