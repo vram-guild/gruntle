@@ -66,7 +66,7 @@ updateStaticVersion me.shedaniel.cloth:cloth-config-fabric 5.1.40 fabric/project
 # https://www.curseforge.com/minecraft/mc-mods/roughly-enough-items/files
 updateStaticVersion me.shedaniel:RoughlyEnoughItems-fabric 6.2.335 fabric/project.gradle
 
-sed -i '' 's/"fabricloader": ".*"/"fabricloader": ">=0.12.5"/' fabric/src/main/resources/fabric.mod.json
+sed -i '' 's/"fabricloader": ".*"/"fabricloader": ">=0.12.8"/' fabric/src/main/resources/fabric.mod.json
 sed -i '' 's/"minecraft": ".*"/"minecraft": "1.17.1"/' fabric/src/main/resources/fabric.mod.json
 
 if [[ $1 == 'auto' ]]; then
