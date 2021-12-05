@@ -54,7 +54,7 @@ updateStaticVersion()
 publishFabric()
 {
   cd fabric
-  ./gradlew build publish githubRelease
+  ./gradlew build publish github
   cd ..
 }
 
