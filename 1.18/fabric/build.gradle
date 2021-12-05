@@ -280,8 +280,8 @@ task publishModrinth (type: TaskModrinthUpload){ // Make sure it runs after buil
 	}
 }
 
-githubRelease.dependsOn build
-curseforge.dependsOn build
-publishModrinth.dependsOn build
+githubRelease.mustRunAfter build
+curseforge.mustRunAfter build
+publishModrinth.mustRunAfter build
 
 apply from: 'project.gradle'
