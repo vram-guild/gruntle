@@ -54,12 +54,7 @@ updateStaticVersion()
 publishFabric()
 {
   cd fabric
-  ./gradlew publish --rerun-tasks
-  # Gradle/loom won't re-include nested jars without this
-  # Also won't do it with --rerun-tasks on githubRelease - has to be a build
-  ./gradlew --stop
-  ./gradlew build --rerun-tasks
-  ./gradlew githubRelease
+  ./gradlew build publish githubRelease
   cd ..
 }
 
