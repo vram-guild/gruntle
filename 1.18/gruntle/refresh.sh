@@ -4,11 +4,12 @@ readonly MOD_MENU_VERSION="3.0.0"
 # https://www.curseforge.com/minecraft/mc-mods/cloth-config/files
 readonly CLOTH_CONFIG_VERSION="6.0.45"
 # https://www.curseforge.com/minecraft/mc-mods/roughly-enough-items/files
-readonly REI_VERSION="7.0.343"
+readonly REI_VERSION="7.0.346"
 
+# TOOD: Loader version is also defined in build.gradle - really need it in one place
 # https://fabricmc.net/versions.html
-readonly LOADER_VERSION="0.12.8"
-readonly MC_FULL_VERSION="1.18"
+readonly LOADER_VERSION="0.12.11"
+readonly MC_FULL_VERSION="1.18.1"
 
 ### START COMMON CODE ##########################################
 
