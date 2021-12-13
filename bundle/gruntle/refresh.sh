@@ -54,14 +54,14 @@ updateStaticVersion()
 publishFabric()
 {
   cd fabric
-  ./gradlew build publish github
+  ../gradlew build publish github
   cd ..
 }
 
 publishForge()
 {
   cd forge
-  ./gradlew build publish github
+  ../gradlew build publish github
   cd ..
 }
 
