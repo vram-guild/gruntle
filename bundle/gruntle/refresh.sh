@@ -105,8 +105,6 @@ updateStaticVersion me.shedaniel:RoughlyEnoughItems-fabric $REI_VERSION fabric/p
 sed -i '' "s/\"fabricloader\": \".*\"/\"fabricloader\": \">=$LOADER_VERSION\"/" fabric/src/main/resources/fabric.mod.json
 sed -i '' "s/\"minecraft\": \".*\"/\"minecraft\": \"$MC_FULL_VERSION\"/" fabric/src/main/resources/fabric.mod.json
 
-ext.mod_name = 'clear-skies'
-
 if [[ $1 == 'auto' ]]; then
     if output=$(git status --porcelain) && [ -z "$output" ]; then
       # We haven't changed anything but check if latest commit is published
