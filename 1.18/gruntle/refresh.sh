@@ -2,9 +2,9 @@ readonly MC_TAG="mc118"
 # https://www.curseforge.com/minecraft/mc-mods/modmenu/files
 readonly MOD_MENU_VERSION="3.0.0"
 # https://www.curseforge.com/minecraft/mc-mods/cloth-config/files
-readonly CLOTH_CONFIG_VERSION="6.0.45"
+readonly CLOTH_CONFIG_VERSION="6.1.48"
 # https://www.curseforge.com/minecraft/mc-mods/roughly-enough-items/files
-readonly REI_VERSION="7.0.346"
+readonly REI_VERSION="7.0.352"
 
 # TOOD: Loader version is also defined in build.gradle - really need it in one place
 # https://fabricmc.net/versions.html
