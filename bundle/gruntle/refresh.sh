@@ -108,6 +108,8 @@ sed -i '' "s/\"minecraft\": \".*\"/\"minecraft\": \"$MC_FULL_VERSION\"/" fabric/
 if [[ $1 == 'auto' ]]; then
   build_forge=$(grep "ext.build_forge" "project_common.gradle" | sed -n 's:.*ext.mod_name\s*=\s*\(.*\):\1:p')
 
+  echo "Build Forge: ${build_forge}"
+
   if output=$(git status --porcelain) && [ -z "$output" ]; then
     # We haven't changed anything but check if latest commit is published
     mod_name=$(grep "ext.mod_name" "project_common.gradle" | sed -n 's:.*ext.mod_name\s*=\s*''\(.*\)'':\1:p')
@@ -117,7 +119,10 @@ if [[ $1 == 'auto' ]]; then
     patch=$(git rev-list --count HEAD)
 
     fabricMavenVer=$(curl -s "https://maven.vram.io/$subUrl/$mod_name-fabric-$MC_TAG/maven-metadata.xml" | grep "<release>" | sed -n 's:.*<release>\(.*\)</release>.*:\1:p')
+    echo "Current Fabric Maven Version: ${fabricMavenVer}"
     forgeMavenVer=$(curl -s "https://maven.vram.io/$subUrl/$mod_name-forge-$MC_TAG/maven-metadata.xml" | grep "<release>" | sed -n 's:.*<release>\(.*\)</release>.*:\1:p')
+    echo "Current Forge Maven Version: ${forgeMavenVer}"
+    echo "Expected Maven version: $major_minor.$patch"
 
     if [[ "$fabricMavenVer" == "$major_minor.$patch" ]] && ( [[ "$forgeMavenVer" == "$major_minor.$patch" ]] || [[ ! "$build_forge" == "true" ]] ); then
       echo "No Gruntle update actions required - no dependency changes and latest publish version $major_minor.$patch is current with the commit log count."
