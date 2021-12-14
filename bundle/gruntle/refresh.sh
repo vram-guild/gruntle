@@ -151,7 +151,7 @@ if [[ $1 == 'auto' ]]; then
         echo "Publishing"
         publishFabric
 
-        if [[ "$build_forge" == "true" ]] then
+        if [[ "$build_forge" == "true" ]]; then
           publishForge
         fi
       else
