@@ -106,15 +106,15 @@ sed -i '' "s/\"fabricloader\": \".*\"/\"fabricloader\": \">=$LOADER_VERSION\"/" 
 sed -i '' "s/\"minecraft\": \".*\"/\"minecraft\": \"$MC_FULL_VERSION\"/" fabric/src/main/resources/fabric.mod.json
 
 if [[ $1 == 'auto' ]]; then
-  build_forge=$(grep "ext.build_forge" "project_common.gradle" | sed -n 's:.*ext.build_forge\s*=\s*\(.*\):\1:p')
+  build_forge=$(sed -n 's/^ext\.build_forge *= *//p' 'project_common.gradle')
   echo "Build Forge $build_forge"
 
   if output=$(git status --porcelain) && [ -z "$output" ]; then
     # We haven't changed anything but check if latest commit is published
-    mod_name=$(grep "ext.mod_name" "project_common.gradle" | sed -n "s:.*ext.mod_name\s*=\s*'\(.*\)':\1:p")
-    maven_group=$(grep "ext.group" "project_common.gradle" | sed -n "s:.*ext.group\s*=\s*'\(.*\)':\1:p")
+    mod_name=$(sed -n "s/^ext\.mod_name *= *'\([0-9a-zA-Z]*\)'/\1/p" 'project_common.gradle')
+    maven_group=$(sed -n "s/^project\.group *= *'\([\.0-9a-zA-Z]*\)'/\1/p" 'project_common.gradle')
     subUrl=${maven_group//[:\.]/\/}
-    major_minor=$(grep "ext.mod_version" "project_common.gradle" | sed -n "s:.*mod_version\s*=\s*'\(.*\)':\1:p")
+    major_minor=$(sed -n "s/^ext\.mod_version *= *'\([/.0-9a-zA-Z]*\)'/\1/p" 'project_common.gradle')
     patch=$(git rev-list --count HEAD)
 
     fabricMavenVer=$(curl -s "https://maven.vram.io/$subUrl/$mod_name-fabric-$MC_TAG/maven-metadata.xml" | grep "<release>" | sed -n 's:.*<release>\(.*\)</release>.*:\1:p')
