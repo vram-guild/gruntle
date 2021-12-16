@@ -82,65 +82,6 @@ jar {
    }
 }
 
-if (project.build_fat_jar) {
-	task remapMavenJar(type: net.fabricmc.loom.task.RemapJarTask, dependsOn: jar) {
-		input = jar.archiveFile
-		archiveFileName = "${archivesBaseName}-${project.version}-slim.jar"
-		addNestedDependencies = false
-		remapAccessWidener = true
-	}
-
-	build.dependsOn remapMavenJar
-}
-
-publishing {
-	publications {
-		mavenJava(MavenPublication) {
-			artifactId = project.archivesBaseName;
-
-			if (project.build_fat_jar) {
-				artifact(remapMavenJar) {
-					builtBy remapMavenJar
-				}
-
-				artifact(remapJar) {
-					classifier = "fat"
-					builtBy remapJar
-				}
-			} else {
-				artifact(remapJar) {
-					builtBy remapJar
-				}
-			}
-
-			artifact(sourcesJar) {
-				classifier = "sources"
-				builtBy remapSourcesJar
-			}
-		}
-	}
-
-	repositories {
-		mavenLocal()
-
-		if (project.version.endsWith('LOCAL') || project.version.endsWith('SNAPSHOT')) {
-			println "Snapshot build will be local only - not pushed to public maven"
-		} else {
-	    maven {
-        url = 'sftp://maven.vram.io:22'
-        credentials {
-        	if (project.hasProperty('maven_user')) {
-						username = project.getProperty('maven_user')
-					}
-					if (project.hasProperty('maven_password')) {
-						password = project.getProperty('maven_password')
-					}
-				}
-	    }
-		}
-	}
-}
-
 curseforge {
 	if (project.hasProperty("curseforge_api_key") && project.hasProperty('curseforge_id')) {
 		apiKey = project.properties.curseforge_api_key
