@@ -3,6 +3,8 @@ readonly MC_TAG="mc117"
 readonly MOD_MENU_VERSION="2.0.14"
 # https://www.curseforge.com/minecraft/mc-mods/cloth-config/files
 readonly CLOTH_CONFIG_VERSION="5.1.40"
+# https://www.curseforge.com/minecraft/mc-mods/cloth-config-forge/files
+readonly CLOTH_CONFIG_FORGE_VERSION="5.2.47"
 # https://www.curseforge.com/minecraft/mc-mods/roughly-enough-items/files
 readonly REI_VERSION="6.2.347"
 
@@ -100,6 +102,7 @@ updateVersion "grondag:mcmarkdown-$MC_TAG" fabric/project.gradle
 
 updateStaticVersion com.terraformersmc:modmenu $MOD_MENU_VERSION fabric/project.gradle
 updateStaticVersion me.shedaniel.cloth:cloth-config-fabric $CLOTH_CONFIG_VERSION fabric/project.gradle
+updateStaticVersion me.shedaniel.cloth:cloth-config-forge $CLOTH_CONFIG_FORGE_VERSION forge/project.gradle
 updateStaticVersion me.shedaniel:RoughlyEnoughItems-fabric $REI_VERSION fabric/project.gradle
 
 sed -i '' "s/\"fabricloader\": \".*\"/\"fabricloader\": \">=$LOADER_VERSION\"/" fabric/src/main/resources/fabric.mod.json
