@@ -6,7 +6,13 @@ readonly CLOTH_CONFIG_VERSION="6.1.48"
 # https://www.curseforge.com/minecraft/mc-mods/cloth-config-forge/files
 readonly CLOTH_CONFIG_FORGE_VERSION="6.1.48"
 # https://www.curseforge.com/minecraft/mc-mods/roughly-enough-items/files
-readonly REI_VERSION="7.0.352"
+readonly REI_VERSION="7.1.352"
+# https://www.curseforge.com/minecraft/mc-mods/roughly-enough-items-forge/files
+readonly REI_FORGE_VERSION="7.1.356"
+#https://www.curseforge.com/minecraft/mc-mods/architectury-fabric/files
+readonly ARCH_VERSION="3.2.60"
+#https://www.curseforge.com/minecraft/mc-mods/architectury-forge/files
+readonly ARCH_FORGE_VERSION="3.2.60"
 
 # https://fabricmc.net/versions.html
 readonly LOADER_VERSION="0.12.11"
@@ -85,11 +91,9 @@ updateVersion "io.vram:jmx-forge-$MC_TAG" forge/project.gradle
 updateVersion "io.vram:canvas-fabric-$MC_TAG" fabric/project.gradle
 updateVersion "io.vram:canvas-forge-$MC_TAG" forge/project.gradle
 
-updateVersion "grondag:exotic-art-core-$MC_TAG" fabric/project.gradle
-updateVersion "grondag:exotic-art-tech-$MC_TAG" fabric/project.gradle
-updateVersion "grondag:exotic-art-test-$MC_TAG" fabric/project.gradle
-updateVersion "grondag:exotic-art-unstable-$MC_TAG" fabric/project.gradle
-updateVersion "grondag:exotic-matter-$MC_TAG" fabric/project.gradle
+updateVersion "grondag:exotic-matter-fabric-$MC_TAG" fabric/project.gradle
+updateVersion "grondag:exotic-matter-forge-$MC_TAG" fabric/project.gradle
+
 updateVersion "grondag:fermion-gui-$MC_TAG" fabric/project.gradle
 updateVersion "grondag:fermion-$MC_TAG" fabric/project.gradle
 updateVersion "grondag:fermion-modkeys-$MC_TAG" fabric/project.gradle
@@ -97,13 +101,14 @@ updateVersion "grondag:fermion-orientation-$MC_TAG" fabric/project.gradle
 updateVersion "grondag:fermion-simulator-$MC_TAG" fabric/project.gradle
 updateVersion "grondag:fermion-varia-$MC_TAG" fabric/project.gradle
 updateVersion "grondag:fluidity-$MC_TAG" fabric/project.gradle
-updateVersion "grondag:fonthack-$MC_TAG" fabric/project.gradle
-updateVersion "grondag:mcmarkdown-$MC_TAG" fabric/project.gradle
 
 updateStaticVersion com.terraformersmc:modmenu $MOD_MENU_VERSION fabric/project.gradle
 updateStaticVersion me.shedaniel.cloth:cloth-config-fabric $CLOTH_CONFIG_VERSION fabric/project.gradle
 updateStaticVersion me.shedaniel.cloth:cloth-config-forge $CLOTH_CONFIG_FORGE_VERSION forge/project.gradle
 updateStaticVersion me.shedaniel:RoughlyEnoughItems-fabric $REI_VERSION fabric/project.gradle
+updateStaticVersion me.shedaniel:RoughlyEnoughItems-forge $REI_FORGE_VERSION forge/project.gradle
+updateStaticVersion dev.architectury:architectury-fabric $ARCH_VERSION fabric/project.gradle
+updateStaticVersion dev.architectury:architectury-fabric $ARCH_FORGE_VERSION forge/project.gradle
 
 sed -i '' "s/\"fabricloader\": \".*\"/\"fabricloader\": \">=$LOADER_VERSION\"/" fabric/src/main/resources/fabric.mod.json
 sed -i '' "s/\"minecraft\": \".*\"/\"minecraft\": \"$MC_FULL_VERSION\"/" fabric/src/main/resources/fabric.mod.json
