@@ -82,6 +82,9 @@ updateVersion io.vram:bitraster forge/project.gradle
 updateVersion io.vram:special-circumstances fabric/project.gradle
 updateVersion io.vram:special-circumstances forge/project.gradle
 
+updateVersion io.vram:dtklib fabric/project.gradle
+updateVersion io.vram:dtklib forge/project.gradle
+
 updateVersion "io.vram:frex-fabric-$MC_TAG" fabric/project.gradle
 updateVersion "io.vram:frex-forge-$MC_TAG" forge/project.gradle
 
