@@ -6,9 +6,9 @@ readonly CLOTH_CONFIG_VERSION="6.1.48"
 # https://www.curseforge.com/minecraft/mc-mods/cloth-config-forge/files
 readonly CLOTH_CONFIG_FORGE_VERSION="6.1.48"
 # https://www.curseforge.com/minecraft/mc-mods/roughly-enough-items/files
-readonly REI_VERSION="7.1.352"
+readonly REI_VERSION="7.1.357"
 # https://www.curseforge.com/minecraft/mc-mods/roughly-enough-items-forge/files
-readonly REI_FORGE_VERSION="7.1.356"
+readonly REI_FORGE_VERSION="7.1.357"
 #https://www.curseforge.com/minecraft/mc-mods/architectury-fabric/files
 readonly ARCH_VERSION="3.2.60"
 #https://www.curseforge.com/minecraft/mc-mods/architectury-forge/files
