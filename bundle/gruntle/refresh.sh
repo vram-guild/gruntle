@@ -97,6 +97,9 @@ updateVersion "io.vram:canvas-forge-$MC_TAG" forge/project.gradle
 updateVersion "io.vram:littlegui-fabric-$MC_TAG" fabric/project.gradle
 updateVersion "io.vram:littlegui-forge-$MC_TAG" forge/project.gradle
 
+updateVersion "io.vram:modkeys-fabric-$MC_TAG" fabric/project.gradle
+updateVersion "io.vram:modkeys-forge-$MC_TAG" forge/project.gradle
+
 updateVersion "grondag:exotic-matter-fabric-$MC_TAG" fabric/project.gradle
 updateVersion "grondag:exotic-matter-forge-$MC_TAG" fabric/project.gradle
 
