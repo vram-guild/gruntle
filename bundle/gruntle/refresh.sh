@@ -103,8 +103,8 @@ updateVersion "io.vram:modkeys-forge-$MC_TAG" forge/project.gradle
 updateVersion "grondag:exotic-matter-fabric-$MC_TAG" fabric/project.gradle
 updateVersion "grondag:exotic-matter-forge-$MC_TAG" forge/project.gradle
 
-updateVersion "grondag:fluidity-fabric-$MC_TAG" fabric/project.gradle
-updateVersion "grondag:fluidity-forge-$MC_TAG" forge/project.gradle
+updateVersion "io.vram:fluidity-fabric-$MC_TAG" fabric/project.gradle
+updateVersion "io.vram:fluidity-forge-$MC_TAG" forge/project.gradle
 
 updateVersion "grondag:fermion-gui-$MC_TAG" fabric/project.gradle
 updateVersion "grondag:fermion-$MC_TAG" fabric/project.gradle
