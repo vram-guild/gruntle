@@ -101,7 +101,10 @@ updateVersion "io.vram:modkeys-fabric-$MC_TAG" fabric/project.gradle
 updateVersion "io.vram:modkeys-forge-$MC_TAG" forge/project.gradle
 
 updateVersion "grondag:exotic-matter-fabric-$MC_TAG" fabric/project.gradle
-updateVersion "grondag:exotic-matter-forge-$MC_TAG" fabric/project.gradle
+updateVersion "grondag:exotic-matter-forge-$MC_TAG" forge/project.gradle
+
+updateVersion "grondag:fluidity-fabric-$MC_TAG" fabric/project.gradle
+updateVersion "grondag:fluidity-forge-$MC_TAG" forge/project.gradle
 
 updateVersion "grondag:fermion-gui-$MC_TAG" fabric/project.gradle
 updateVersion "grondag:fermion-$MC_TAG" fabric/project.gradle
@@ -109,7 +112,6 @@ updateVersion "grondag:fermion-modkeys-$MC_TAG" fabric/project.gradle
 updateVersion "grondag:fermion-orientation-$MC_TAG" fabric/project.gradle
 updateVersion "grondag:fermion-simulator-$MC_TAG" fabric/project.gradle
 updateVersion "grondag:fermion-varia-$MC_TAG" fabric/project.gradle
-updateVersion "grondag:fluidity-$MC_TAG" fabric/project.gradle
 
 updateStaticVersion com.terraformersmc:modmenu $MOD_MENU_VERSION fabric/project.gradle
 updateStaticVersion me.shedaniel.cloth:cloth-config-fabric $CLOTH_CONFIG_VERSION fabric/project.gradle
