@@ -1,6 +1,6 @@
 readonly MC_TAG="mc118"
 # https://www.curseforge.com/minecraft/mc-mods/modmenu/files
-readonly MOD_MENU_VERSION="3.0.1"
+readonly MOD_MENU_VERSION="3.1.1"
 # https://www.curseforge.com/minecraft/mc-mods/cloth-config/files
 readonly CLOTH_CONFIG_VERSION="6.2.57"
 # https://www.curseforge.com/minecraft/mc-mods/cloth-config-forge/files
