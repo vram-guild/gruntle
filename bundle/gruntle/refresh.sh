@@ -62,14 +62,14 @@ updateStaticVersion()
 publishFabric()
 {
   cd fabric
-  ../gradlew build publish github
+  ../gradlew build publish github --rerun-tasks
   cd ..
 }
 
 publishForge()
 {
   cd forge
-  ../gradlew build publish github
+  ../gradlew build publish github --rerun-tasks
   cd ..
 }
 
