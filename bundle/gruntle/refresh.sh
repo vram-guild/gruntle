@@ -1,22 +1,22 @@
-readonly MC_TAG="mc118"
+readonly MC_TAG="mc119"
 # https://www.curseforge.com/minecraft/mc-mods/modmenu/files
-readonly MOD_MENU_VERSION="3.2.2"
+readonly MOD_MENU_VERSION="4.0.0-beta.4"
 # https://www.curseforge.com/minecraft/mc-mods/cloth-config/files
-readonly CLOTH_CONFIG_VERSION="6.2.62"
+readonly CLOTH_CONFIG_VERSION="7.0.65"
 # https://www.curseforge.com/minecraft/mc-mods/cloth-config-forge/files
 readonly CLOTH_CONFIG_FORGE_VERSION="6.2.62"
 # https://www.curseforge.com/minecraft/mc-mods/roughly-enough-items/files
-readonly REI_VERSION="8.2.463"
+readonly REI_VERSION="9.0.466"
 # https://www.curseforge.com/minecraft/mc-mods/roughly-enough-items-forge/files
 readonly REI_FORGE_VERSION="7.1.380"
 # https://www.curseforge.com/minecraft/mc-mods/architectury-fabric/files
-readonly ARCH_VERSION="4.4.56"
+readonly ARCH_VERSION="5.3.10"
 # https://www.curseforge.com/minecraft/mc-mods/architectury-forge/files
 readonly ARCH_FORGE_VERSION="4.4.64"
 
 # https://fabricmc.net/versions.html
 readonly LOADER_VERSION="0.14.6"
-readonly MC_FULL_VERSION="1.18.2"
+readonly MC_FULL_VERSION="1.19-rc2"
 
 ### START COMMON CODE ##########################################
 
