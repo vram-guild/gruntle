@@ -122,7 +122,8 @@ updateStaticVersion dev.architectury:architectury-fabric $ARCH_VERSION fabric/pr
 updateStaticVersion dev.architectury:architectury-fabric $ARCH_FORGE_VERSION forge/project.gradle
 
 sed -i '' "s/\"fabricloader\": \".*\"/\"fabricloader\": \">=$LOADER_VERSION\"/" fabric/src/main/resources/fabric.mod.json
-sed -i '' "s/\"minecraft\": \".*\"/\"minecraft\": \"$MC_FULL_VERSION\"/" fabric/src/main/resources/fabric.mod.json
+sed -i '' "s/\"minecraft\": \".*\"/\"minecraft\": \">=$MC_FULL_VERSION\"/" fabric/src/main/resources/fabric.mod.json
+sed -i '' "s/\"architectury\": \".*\"/\"architectury\": \">=$ARCH_VERSION\"/" fabric/src/main/resources/fabric.mod.json
 
 if [[ $1 == 'auto' ]]; then
   build_forge=$(sed -n 's/^ext\.build_forge *= *//p' 'project_common.gradle')
