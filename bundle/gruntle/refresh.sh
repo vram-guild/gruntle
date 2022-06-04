@@ -10,9 +10,11 @@ readonly REI_VERSION="9.0.466"
 # https://www.curseforge.com/minecraft/mc-mods/roughly-enough-items-forge/files
 readonly REI_FORGE_VERSION="7.1.380"
 # https://www.curseforge.com/minecraft/mc-mods/architectury-fabric/files
-readonly ARCH_VERSION="5.3.10"
+readonly ARCH_VERSION="5.4.15"
 # https://www.curseforge.com/minecraft/mc-mods/architectury-forge/files
 readonly ARCH_FORGE_VERSION="4.4.64"
+# https://maven.gegy.dev/releases/dev/lambdaurora/spruceui
+readonly SPRUCE_UI_VERSION="3.3.3+1.18"
 
 # https://fabricmc.net/versions.html
 readonly LOADER_VERSION="0.14.6"
@@ -120,6 +122,7 @@ updateStaticVersion me.shedaniel:RoughlyEnoughItems-fabric $REI_VERSION fabric/p
 updateStaticVersion me.shedaniel:RoughlyEnoughItems-forge $REI_FORGE_VERSION forge/project.gradle
 updateStaticVersion dev.architectury:architectury-fabric $ARCH_VERSION fabric/project.gradle
 updateStaticVersion dev.architectury:architectury-fabric $ARCH_FORGE_VERSION forge/project.gradle
+updateStaticVersion dev.lambdaurora:spruceui $SPRUCE_UI_VERSION fabric/project.gradle
 
 sed -i '' "s/\"fabricloader\": \".*\"/\"fabricloader\": \">=$LOADER_VERSION\"/" fabric/src/main/resources/fabric.mod.json
 sed -i '' "s/\"minecraft\": \".*\"/\"minecraft\": \">=$MC_FULL_VERSION\"/" fabric/src/main/resources/fabric.mod.json
