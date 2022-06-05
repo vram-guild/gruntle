@@ -19,6 +19,8 @@ readonly SPRUCE_UI_VERSION="3.3.3+1.18"
 # https://fabricmc.net/versions.html
 readonly LOADER_VERSION="0.14.6"
 readonly MC_FULL_VERSION="1.19-rc2"
+# Following is used in fabric.mod.json because pre-release suffixes cause problems in version tests
+readonly MC_SHORT_VERSION="1.19"
 
 ### START COMMON CODE ##########################################
 
@@ -125,7 +127,7 @@ updateStaticVersion dev.architectury:architectury-fabric $ARCH_FORGE_VERSION for
 updateStaticVersion dev.lambdaurora:spruceui $SPRUCE_UI_VERSION fabric/project.gradle
 
 sed -i '' "s/\"fabricloader\": \".*\"/\"fabricloader\": \">=$LOADER_VERSION\"/" fabric/src/main/resources/fabric.mod.json
-sed -i '' "s/\"minecraft\": \".*\"/\"minecraft\": \">=$MC_FULL_VERSION\"/" fabric/src/main/resources/fabric.mod.json
+sed -i '' "s/\"minecraft\": \".*\"/\"minecraft\": \">=$MC_SHORT_VERSION\"/" fabric/src/main/resources/fabric.mod.json
 sed -i '' "s/\"architectury\": \".*\"/\"architectury\": \">=$ARCH_VERSION\"/" fabric/src/main/resources/fabric.mod.json
 
 if [[ $1 == 'auto' ]]; then
