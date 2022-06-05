@@ -18,9 +18,9 @@ readonly SPRUCE_UI_VERSION="3.3.3+1.18"
 
 # https://fabricmc.net/versions.html
 readonly LOADER_VERSION="0.14.6"
-readonly MC_FULL_VERSION="1.19-rc.2"
+readonly MC_FULL_VERSION="1.19-rc2"
 # Following is used in fabric.mod.json because pre-release suffixes are apparently parsed differently there
-readonly MC_SHORT_VERSION="1.19"
+readonly MC_SHORT_VERSION="1.19-rc.2"
 
 ### START COMMON CODE ##########################################
 
