@@ -10,6 +10,7 @@ readonly REI_VERSION="9.0.466"
 # https://www.curseforge.com/minecraft/mc-mods/roughly-enough-items-forge/files
 readonly REI_FORGE_VERSION="7.1.380"
 # https://www.curseforge.com/minecraft/mc-mods/architectury-fabric/files
+# https://modrinth.com/mod/architectury-api/versions
 readonly ARCH_VERSION="5.4.15"
 # https://www.curseforge.com/minecraft/mc-mods/architectury-forge/files
 readonly ARCH_FORGE_VERSION="4.4.64"
@@ -18,9 +19,9 @@ readonly SPRUCE_UI_VERSION="3.3.3+1.18"
 
 # https://fabricmc.net/versions.html
 readonly LOADER_VERSION="0.14.6"
-readonly MC_FULL_VERSION="1.19-rc2"
+readonly MC_FULL_VERSION="1.19"
 # Following is used in fabric.mod.json because pre-release suffixes are apparently parsed differently there
-readonly MC_SHORT_VERSION="1.19-rc.2"
+readonly MC_SHORT_VERSION="1.19"
 
 ### START COMMON CODE ##########################################
 
