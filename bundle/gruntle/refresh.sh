@@ -2,18 +2,18 @@ readonly MC_TAG="mc119"
 # https://www.curseforge.com/minecraft/mc-mods/modmenu/files
 readonly MOD_MENU_VERSION="4.0.0-beta.4"
 # https://www.curseforge.com/minecraft/mc-mods/cloth-config/files
-readonly CLOTH_CONFIG_VERSION="7.0.65"
+readonly CLOTH_CONFIG_VERSION="7.0.72"
 # https://www.curseforge.com/minecraft/mc-mods/cloth-config-forge/files
-readonly CLOTH_CONFIG_FORGE_VERSION="6.2.62"
+readonly CLOTH_CONFIG_FORGE_VERSION="7.0.72"
 # https://www.curseforge.com/minecraft/mc-mods/roughly-enough-items/files
-readonly REI_VERSION="9.0.466"
+readonly REI_VERSION="9.0.491"
 # https://www.curseforge.com/minecraft/mc-mods/roughly-enough-items-forge/files
-readonly REI_FORGE_VERSION="7.1.380"
+readonly REI_FORGE_VERSION="9.0.491"
 # https://www.curseforge.com/minecraft/mc-mods/architectury-fabric/files
 # https://modrinth.com/mod/architectury-api/versions
-readonly ARCH_VERSION="5.4.15"
+readonly ARCH_VERSION="5.7.27"
 # https://www.curseforge.com/minecraft/mc-mods/architectury-forge/files
-readonly ARCH_FORGE_VERSION="4.4.64"
+readonly ARCH_FORGE_VERSION="5.7.27"
 # https://maven.gegy.dev/releases/dev/lambdaurora/spruceui
 readonly SPRUCE_UI_VERSION="3.3.3+1.18"
 
