@@ -1,24 +1,22 @@
 readonly MC_TAG="mc119"
 # https://www.curseforge.com/minecraft/mc-mods/modmenu/files
-readonly MOD_MENU_VERSION="4.0.0-beta.4"
+readonly MOD_MENU_VERSION="4.0.0"
 # https://www.curseforge.com/minecraft/mc-mods/cloth-config/files
 readonly CLOTH_CONFIG_VERSION="7.0.72"
 # https://www.curseforge.com/minecraft/mc-mods/cloth-config-forge/files
 readonly CLOTH_CONFIG_FORGE_VERSION="7.0.72"
 # https://www.curseforge.com/minecraft/mc-mods/roughly-enough-items/files
-readonly REI_VERSION="9.0.491"
-# https://www.curseforge.com/minecraft/mc-mods/roughly-enough-items-forge/files
-readonly REI_FORGE_VERSION="9.0.491"
-# https://www.curseforge.com/minecraft/mc-mods/architectury-fabric/files
+readonly REI_VERSION="9.1.500"
+readonly REI_FORGE_VERSION="9.1.500"
+# https://www.curseforge.com/minecraft/mc-mods/architectury-api/files
 # https://modrinth.com/mod/architectury-api/versions
-readonly ARCH_VERSION="5.7.27"
-# https://www.curseforge.com/minecraft/mc-mods/architectury-forge/files
-readonly ARCH_FORGE_VERSION="5.7.27"
+readonly ARCH_VERSION="5.7.28"
+readonly ARCH_FORGE_VERSION="5.7.28"
 # https://maven.gegy.dev/releases/dev/lambdaurora/spruceui
-readonly SPRUCE_UI_VERSION="3.3.3+1.18"
+readonly SPRUCE_UI_VERSION="4.0.0+1.19"
 
 # https://fabricmc.net/versions.html
-readonly LOADER_VERSION="0.14.6"
+readonly LOADER_VERSION="0.14.8"
 readonly MC_FULL_VERSION="1.19"
 # Following is used in fabric.mod.json because pre-release suffixes are apparently parsed differently there
 readonly MC_SHORT_VERSION="1.19"
