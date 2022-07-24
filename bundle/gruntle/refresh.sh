@@ -15,7 +15,7 @@ readonly ARCH_VERSION="4.4.56"
 readonly ARCH_FORGE_VERSION="4.4.64"
 
 # https://fabricmc.net/versions.html
-readonly LOADER_VERSION="0.14.6"
+readonly LOADER_VERSION="0.14.8"
 readonly MC_FULL_VERSION="1.18.2"
 
 ### START COMMON CODE ##########################################
