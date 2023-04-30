@@ -1,4 +1,3 @@
-readonly MC_TAG="mc119"
 # https://www.curseforge.com/minecraft/mc-mods/modmenu/files
 readonly MOD_MENU_VERSION="5.0.2"
 # https://www.curseforge.com/minecraft/mc-mods/cloth-config/files
@@ -17,9 +16,12 @@ readonly SPRUCE_UI_VERSION="4.0.0+1.19"
 
 # https://fabricmc.net/versions.html
 readonly LOADER_VERSION="0.14.11"
-readonly MC_FULL_VERSION="1.19.2"
+# Used as base version number for all mods specific to MC version
+# Last digit will be git commit number
+readonly MOD_VERSION="19.4"
+readonly MC_FULL_VERSION="1.19.4"
 # Following is used in fabric.mod.json because pre-release suffixes are apparently parsed differently there
-readonly MC_SHORT_VERSION="1.19.3"
+readonly MC_SHORT_VERSION="1.19.4"
 
 ### START COMMON CODE ##########################################
 
@@ -33,7 +35,7 @@ updateVersion()
 {
   if grep -q $1 $2; then
     subUrl=${1//[:\.]/\/}
-    ver=$(curl -s "https://maven.vram.io/$subUrl/maven-metadata.xml" | grep "<release>" | sed -n 's:.*<release>\(.*\)</release>.*:\1:p')
+    ver=$(curl -s "https://maven.vram.io/$subUrl/maven-metadata.xml" | grep "<version>$MOD_VERSION" | tail -1 |sed -n 's:.*<version>\(.*\)</version>.*:\1:p')
 
     if grep -q $1:$ver $2; then
       echo $1:$ver "is already current"
@@ -76,6 +78,12 @@ publishForge()
   cd ..
 }
 
+if ! grep -q project_common.gradle @track_minecraft_version; then
+  echo "Project is configured to mirror Minecraft versions."
+  echo "Artifact versions will begin with $MOD_VERSION."
+  sed -i '' "s/^ext\.mod_version.*/ext\.mod_version = '$MOD_VERSION'/" 'project_common.gradle'
+fi
+
 updateVersion io.vram:bitkit fabric/project.gradle
 updateVersion io.vram:bitkit forge/project.gradle
 
@@ -88,33 +96,33 @@ updateVersion io.vram:special-circumstances forge/project.gradle
 updateVersion io.vram:dtklib fabric/project.gradle
 updateVersion io.vram:dtklib forge/project.gradle
 
-updateVersion "io.vram:frex-fabric-$MC_TAG" fabric/project.gradle
-updateVersion "io.vram:frex-forge-$MC_TAG" forge/project.gradle
+updateVersion "io.vram:frex-fabric" fabric/project.gradle
+updateVersion "io.vram:frex-forge" forge/project.gradle
 
-updateVersion "io.vram:jmx-fabric-$MC_TAG" fabric/project.gradle
-updateVersion "io.vram:jmx-forge-$MC_TAG" forge/project.gradle
+updateVersion "io.vram:jmx-fabric" fabric/project.gradle
+updateVersion "io.vram:jmx-forge" forge/project.gradle
 
-updateVersion "io.vram:canvas-fabric-$MC_TAG" fabric/project.gradle
-updateVersion "io.vram:canvas-forge-$MC_TAG" forge/project.gradle
+updateVersion "io.vram:canvas-fabric" fabric/project.gradle
+updateVersion "io.vram:canvas-forge" forge/project.gradle
 
-updateVersion "io.vram:littlegui-fabric-$MC_TAG" fabric/project.gradle
-updateVersion "io.vram:littlegui-forge-$MC_TAG" forge/project.gradle
+updateVersion "io.vram:littlegui-fabric" fabric/project.gradle
+updateVersion "io.vram:littlegui-forge" forge/project.gradle
 
-updateVersion "io.vram:modkeys-fabric-$MC_TAG" fabric/project.gradle
-updateVersion "io.vram:modkeys-forge-$MC_TAG" forge/project.gradle
+updateVersion "io.vram:modkeys-fabric" fabric/project.gradle
+updateVersion "io.vram:modkeys-forge" forge/project.gradle
 
-updateVersion "grondag:exotic-matter-fabric-$MC_TAG" fabric/project.gradle
-updateVersion "grondag:exotic-matter-forge-$MC_TAG" forge/project.gradle
+updateVersion "grondag:exotic-matter-fabric" fabric/project.gradle
+updateVersion "grondag:exotic-matter-forge" forge/project.gradle
 
-updateVersion "io.vram:fluidity-fabric-$MC_TAG" fabric/project.gradle
-updateVersion "io.vram:fluidity-forge-$MC_TAG" forge/project.gradle
+updateVersion "io.vram:fluidity-fabric" fabric/project.gradle
+updateVersion "io.vram:fluidity-forge" forge/project.gradle
 
-updateVersion "grondag:fermion-gui-$MC_TAG" fabric/project.gradle
-updateVersion "grondag:fermion-$MC_TAG" fabric/project.gradle
-updateVersion "grondag:fermion-modkeys-$MC_TAG" fabric/project.gradle
-updateVersion "grondag:fermion-orientation-$MC_TAG" fabric/project.gradle
-updateVersion "grondag:fermion-simulator-$MC_TAG" fabric/project.gradle
-updateVersion "grondag:fermion-varia-$MC_TAG" fabric/project.gradle
+updateVersion "grondag:fermion-gui" fabric/project.gradle
+updateVersion "grondag:fermion" fabric/project.gradle
+updateVersion "grondag:fermion-modkeys" fabric/project.gradle
+updateVersion "grondag:fermion-orientation" fabric/project.gradle
+updateVersion "grondag:fermion-simulator" fabric/project.gradle
+updateVersion "grondag:fermion-varia" fabric/project.gradle
 
 updateStaticVersion com.terraformersmc:modmenu $MOD_MENU_VERSION fabric/project.gradle
 updateStaticVersion me.shedaniel.cloth:cloth-config-fabric $CLOTH_CONFIG_VERSION fabric/project.gradle
@@ -141,9 +149,9 @@ if [[ $1 == 'auto' ]]; then
     major_minor=$(sed -n "s/^ext\.mod_version *= *'\([/.0-9a-zA-Z]*\)'/\1/p" 'project_common.gradle')
     patch=$(git rev-list --count HEAD)
 
-    fabricMavenVer=$(curl -s "https://maven.vram.io/$subUrl/$mod_name-fabric-$MC_TAG/maven-metadata.xml" | grep "<release>" | sed -n 's:.*<release>\(.*\)</release>.*:\1:p')
+    fabricMavenVer=$(curl -s "https://maven.vram.io/$subUrl/$mod_name-fabric/maven-metadata.xml" | grep "<version>$MOD_VERSION" | tail -1 | sed -n 's:.*<version>\(.*\)</version>.*:\1:p')
     echo "Current Fabric Maven Version $fabricMavenVer"
-    forgeMavenVer=$(curl -s "https://maven.vram.io/$subUrl/$mod_name-forge-$MC_TAG/maven-metadata.xml" | grep "<release>" | sed -n 's:.*<release>\(.*\)</release>.*:\1:p')
+    forgeMavenVer=$(curl -s "https://maven.vram.io/$subUrl/$mod_name-forge/maven-metadata.xml" | grep "<version>$MOD_VERSION" | tail -1 | sed -n 's:.*<version>\(.*\)</version>.*:\1:p')
     echo "Current Forge Maven Version $forgeMavenVer"
     echo "Expected Maven version $major_minor.$patch"
 
