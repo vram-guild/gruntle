@@ -41,7 +41,7 @@ updateVersion()
       echo $1:$ver "is already current"
     else
       echo "Updating $1 to $ver"
-      sed -i '' "s/$1:[0-9\.]*/$1:$ver/" $2
+      sed -i "s/$1:[0-9\.]*/$1:$ver/" $2
     fi
   fi
 }
@@ -59,7 +59,7 @@ updateStaticVersion()
       echo $1:$2 "is already current"
     else
       echo "Updating $1 to $2"
-      sed -i '' "s/$1:[0-9\.\-\_a-zA-Z\+]*/$1:$2/" $3
+      sed -i "s/$1:[0-9\.\-\_a-zA-Z\+]*/$1:$2/" $3
     fi
   fi
 }
@@ -81,7 +81,7 @@ publishForge()
 if ! grep -q project_common.gradle @track_minecraft_version; then
   echo "Project is configured to mirror Minecraft versions."
   echo "Artifact versions will begin with $MOD_VERSION."
-  sed -i '' "s/^ext\.mod_version.*/ext\.mod_version = '$MOD_VERSION'/" 'project_common.gradle'
+  sed -i "s/^ext\.mod_version.*/ext\.mod_version = '$MOD_VERSION'/" 'project_common.gradle'
 fi
 
 updateVersion io.vram:bitkit fabric/project.gradle
@@ -133,9 +133,9 @@ updateStaticVersion dev.architectury:architectury-fabric $ARCH_VERSION fabric/pr
 updateStaticVersion dev.architectury:architectury-fabric $ARCH_FORGE_VERSION forge/project.gradle
 updateStaticVersion dev.lambdaurora:spruceui $SPRUCE_UI_VERSION fabric/project.gradle
 
-sed -i '' "s/\"fabricloader\": \".*\"/\"fabricloader\": \">=$LOADER_VERSION\"/" fabric/src/main/resources/fabric.mod.json
-sed -i '' "s/\"minecraft\": \".*\"/\"minecraft\": \">=$MC_SHORT_VERSION\"/" fabric/src/main/resources/fabric.mod.json
-sed -i '' "s/\"architectury\": \".*\"/\"architectury\": \">=$ARCH_VERSION\"/" fabric/src/main/resources/fabric.mod.json
+sed -i "s/\"fabricloader\": \".*\"/\"fabricloader\": \">=$LOADER_VERSION\"/" fabric/src/main/resources/fabric.mod.json
+sed -i "s/\"minecraft\": \".*\"/\"minecraft\": \">=$MC_SHORT_VERSION\"/" fabric/src/main/resources/fabric.mod.json
+sed -i "s/\"architectury\": \".*\"/\"architectury\": \">=$ARCH_VERSION\"/" fabric/src/main/resources/fabric.mod.json
 
 if [[ $1 == 'auto' ]]; then
   build_forge=$(sed -n 's/^ext\.build_forge *= *//p' 'project_common.gradle')
