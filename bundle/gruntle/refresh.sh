@@ -21,7 +21,7 @@ readonly LOADER_VERSION="0.14.19"
 readonly MOD_VERSION="20.0"
 readonly MC_FULL_VERSION="23w13a_or_b"
 # Following is used in fabric.mod.json because pre-release suffixes are apparently parsed differently there
-readonly MC_SHORT_VERSION="23w13a_or_b"
+readonly MC_SHORT_VERSION="1.20-alpha.23.13.ab"
 
 ### START COMMON CODE ##########################################
 
