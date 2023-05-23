@@ -1,4 +1,4 @@
-# https://www.curseforge.com/minecraft/mc-mods/modmenu/files
+# https://modrinth.com/mod/modmenu/versions#all-versions
 readonly MOD_MENU_VERSION="7.0.0-beta.2"
 # https://www.curseforge.com/minecraft/mc-mods/cloth-config/files
 readonly CLOTH_CONFIG_VERSION="11.0.97"
@@ -19,9 +19,9 @@ readonly LOADER_VERSION="0.14.19"
 # Used as base version number for all mods specific to MC version
 # Last digit will be git commit number
 readonly MOD_VERSION="20.0"
-readonly MC_FULL_VERSION="1.20-pre2"
+readonly MC_FULL_VERSION="1.20-pre5"
 # Following is used in fabric.mod.json because pre-release suffixes are apparently parsed differently there
-readonly MC_SHORT_VERSION="1.20-beta.2"
+readonly MC_SHORT_VERSION="1.20-beta.5"
 
 ### START COMMON CODE ##########################################
 
