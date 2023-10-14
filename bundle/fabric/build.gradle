@@ -21,6 +21,13 @@ ext.platform_name = 'fabric'
 ext.loader_version = '0.14.23'
 ext.fabric_version = '0.90.0+1.20.2'
 
+// Hat tip to JellySquid
+configurations {
+    modIncludeImplementation
+    modImplementation.extendsFrom modIncludeImplementation
+    include.extendsFrom modIncludeImplementation
+}
+
 apply from: '../project_common.gradle'
 apply from: 'project.gradle'
 apply from: '../gruntle_common.gradle'
@@ -28,13 +35,6 @@ apply from: '../gruntle_common.gradle'
 dependencies {
 	minecraft "com.mojang:minecraft:${minecraft_version}"
 	mappings loom.officialMojangMappings()
-}
-
-// Hat tip to JellySquid
-configurations {
-    modIncludeImplementation
-    modImplementation.extendsFrom modIncludeImplementation
-    include.extendsFrom modIncludeImplementation
 }
 
 loom {
