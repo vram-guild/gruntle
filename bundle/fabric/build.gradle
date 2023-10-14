@@ -67,12 +67,6 @@ publishing {
 	publications {
 		mavenJava(MavenPublication) {
 			artifactId = base.archivesName.get();
-
-			artifact(sourcesJar) {
-				classifier = "sources"
-				builtBy remapSourcesJar
-			}
-			
 			from components.java
 		}
 	}
