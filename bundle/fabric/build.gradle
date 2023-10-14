@@ -66,6 +66,7 @@ if (project.build_fat_jar) {
 publishing {
 	publications {
 		mavenJava(MavenPublication) {
+			from components.java
 			artifactId = base.archivesName.get();
 
 			if (project.build_fat_jar) {
