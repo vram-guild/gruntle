@@ -66,28 +66,14 @@ if (project.build_fat_jar) {
 publishing {
 	publications {
 		mavenJava(MavenPublication) {
-			from components.java
 			artifactId = base.archivesName.get();
-
-			if (project.build_fat_jar) {
-				artifact(remapMavenJar) {
-					builtBy remapMavenJar
-				}
-
-				artifact(remapJar) {
-					classifier = "fat"
-					builtBy remapJar
-				}
-			} else {
-				artifact(remapJar) {
-					builtBy remapJar
-				}
-			}
 
 			artifact(sourcesJar) {
 				classifier = "sources"
 				builtBy remapSourcesJar
 			}
+			
+			from components.java
 		}
 	}
 
